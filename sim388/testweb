@@ -1,0 +1,23 @@
+drive @v0.3 :($irdistfrontmiddle < 0.45)
+stop
+wait 1
+get "guidemark"
+wait 1
+
+switch ($guidemarkok)
+case 1
+turn 90
+fwd 0.5
+turn -90
+ignoreobstacles
+fwd 0.4
+
+case 2
+turn -90
+fwd 0.5
+turn 90
+ignoreobstacles
+fwd 0.4
+
+endswitch
+stop

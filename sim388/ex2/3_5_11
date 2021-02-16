@@ -1,0 +1,31 @@
+fwd 0.3
+get"guidemark"
+a = $fiducialid
+eval $fiducialid
+followline "bl" @v0.2:($drivendist > 1)
+switch(a)
+case 1 
+	followline "bm" @v0.2 :($crossingblackline > 0)
+	stop
+case 2
+	followline "bm" :($crossingblackline > 0)
+	fwd 0.2
+	followline "bm" :($crossingblackline > 0)
+	stop 
+case 3
+	followline "bm" :($crossingblackline > 0)
+	fwd 0.2
+	followline "bm" :($crossingblackline > 0)
+	fwd 0.2
+	followline "bm" :($crossingblackline > 0)	
+	stop 
+case 4
+	followline "bm" :($crossingblackline > 0)
+	fwd 0.2
+	followline "bm" :($crossingblackline > 0)
+	fwd 0.2
+	followline "bm" :($crossingblackline > 0)
+	fwd 0.2
+	followline "bm" :($crossingblackline > 0)
+	stop 
+endswitch

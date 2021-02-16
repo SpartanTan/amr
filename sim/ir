@@ -1,0 +1,10 @@
+n=6
+eval $irfm
+label "start"
+ignoreobstacles
+fwd 0.1
+wait 1
+d=1.0-$odox-0.25
+eval d;$irfm;$odox
+n=n-1
+if (n>0) "start"

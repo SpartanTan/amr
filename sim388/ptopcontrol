@@ -1,0 +1,39 @@
+array "relativePose" 3
+array "Pose" 3
+array "targetPose" 3
+
+a=2
+b=3
+firstturnangel=0
+%current pose
+Pose[0] = 0
+Pose[1] = 1
+Pose[2] = 0
+
+%input pose relative pose
+relativePose[0] = 0.5
+relativePose[1] = -0.5
+relativePose[2] = -3.14/2
+
+%target pose
+targetPose[0]=Pose[0]+relativePose[0]
+targetPose[1]=Pose[1]+relativePose[1]
+targetPose[2]=Pose[2]+relativePose[2]
+
+%caculate the angel and distance to go 
+firstturnangel = -Pose[2] + atan2(relativePose[1],relativePose[0])
+eval firstturnangel
+wait 2 
+
+lastturnangel = targetPose[2] - atan2(relativePose[1],relativePose[0])
+eval lastturnangel
+wait 2 
+
+dist = sqrt((relativePose[0] * relativePose[0]) + (relativePose[1] * relativePose[1]))
+eval dist
+wait 2 
+
+log "$time" "$odox" "$odoy" "$odoth"
+turn firstturnangel "rad"
+fwd dist
+turn lastturnangel "rad"

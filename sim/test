@@ -1,0 +1,16 @@
+followline "bl" :($odox > 0.7)
+followline "br" :($crossingblackline)
+fwd 0.26
+turn 90
+ignoreobstacles
+followline "bm" :($crossingblackline)
+ignoreobstacles
+followline "bm" :($crossingblackline & $drivendist >0.1)
+followline "bm" :($crossingblackline & $drivendist >0.1)
+followline "bm" :($drivendist >0.5)
+followline "wm" :($crossingblackline)
+fwd 0.26
+turn -90
+followline "bm" :($crossingblackline)
+fwd 0.1
+

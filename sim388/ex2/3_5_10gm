@@ -1,0 +1,19 @@
+fwd 1
+eval $fiducialid
+switch ($fiducialid)
+case 1
+turn 90
+ignoreobstacles
+fwd 0.5
+turn -90
+fwd 0.4
+
+case 2
+turn -90
+ignoreobstacles
+fwd 0.5
+turn 90
+fwd 0.8
+
+endswitch
+stop

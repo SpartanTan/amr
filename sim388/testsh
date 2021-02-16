@@ -1,0 +1,4 @@
+get “guidemark”
+fwd 1
+eval $fiducialid
+stop

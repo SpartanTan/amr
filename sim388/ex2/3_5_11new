@@ -1,0 +1,13 @@
+followline "bl":($fiducialid != -1)
+stopline = $fiducialid
+eval stopline
+lineDetected=0
+
+label "lineCul"
+
+followline "bl" :($crossingblackline == 1)
+wait 0.2
+lineDetected = lineDetected + 1
+if(lineDetected != stopline ) "lineCul"
+
+stop

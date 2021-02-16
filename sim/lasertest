@@ -1,0 +1,6 @@
+log "$time"  "$odox" "$l4"
+laser "scanpush   cmd='zoneobst'"
+wait 1
+fwd 1
+eval $l4
+
