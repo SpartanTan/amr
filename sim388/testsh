@@ -1,4 +1,8 @@
-get “guidemark”
-fwd 1
-eval $fiducialid
+vl = 0.5
+vr = 0.5
+
+motorcmds vl vr
+wait 3
 stop
+eval $odox;$odoy;$odoth
+wait 3
