@@ -12,7 +12,7 @@ Pose[1] = 0
 Pose[2] = 0
 
 %input pose target pose
-targetPose[0] = 0.5
+targetPose[S0] = 0.5
 targetPose[1] = 0.5
 targetPose[2] = -3.1415/2
 
