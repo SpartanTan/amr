@@ -1,0 +1,56 @@
+laser "scanpush cmd='zoneobst'"
+wait 1
+
+array "Pose" 3
+array "targetPose" 3
+
+PI = 3.1415
+
+%paramaters
+krou = 0.3
+kalpha = 0.8
+kbeta = -0.35
+
+%current pose
+Pose[0] = 0
+Pose[1] = 2
+Pose[2] = 0
+
+%input pose target pose
+targetPose[0] = $l9
+targetPose[1] = $l10
+targetPose[2] = PI/2 - $l11
+eval targetPose[0];targetPose[1];targetPose[2]
+
+wait 2
+log "$time" "$odox" "$odoy" "$odoth"
+%%%%%%%%%%%%%%%%%
+%%starting loop%%
+%%%%%%%%%%%%%%%%%
+label "feedbackloop"
+
+%current pose
+Pose[0] = $odox
+Pose[1] = $odoy
+Pose[2] = $odoth
+%caculat dx dy
+deltax = targetPose[0] - Pose[0]
+deltay = targetPose[1] - Pose[1]
+
+%caculate rou,alpha,beta
+rou = sqrt(deltax^2 + deltay^2)
+alpha = -Pose[2] + atan2(deltay,deltax)
+beta = targetPose[2] - Pose[2] - alpha
+
+%caculate v w
+v = krou * rou
+w = kalpha*alpha + kbeta*beta
+
+vr = v + w*(0.26/2)
+vl = v - w*(0.26/2)
+
+motorcmds vl vr
+
+if(rou>0.02 | abs(alpha) > 0.02) "feedbackloop"
+eval rou;alpha;beta
+stop
